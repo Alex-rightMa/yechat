@@ -4,8 +4,8 @@ import { iconsPlugin, getIconCollections } from "@egoist/tailwindcss-icons";
 module.exports = {
   content: [
     "./src/**/*.{html,js,ts,jsx,tsx,vue}",
-    "./src/custom-tab-bar/*.{vue}",
-    "./src/components/*.{vue}",
+    "./src/custom-tab-bar/*.vue",
+    "./src/components/*.vue",
   ],
   theme: {
     extend: {},

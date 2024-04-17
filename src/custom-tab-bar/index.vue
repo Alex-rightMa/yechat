@@ -60,15 +60,11 @@ const handleSwtich = (item: TabbarItem) => {
 const cacheTabHeight = () => {
   // 页面 onShow 时
   if (!appStore.sysInfo) {
-    Taro.getSystemInfo().then((res) => {
-      console.log(res)
-      const safePadding = res.screenHeight - res.safeArea?.bottom
-      const fixVal = safePadding !== 0 ? 11 * res.pixelRatio : 0
-      customTabStore.setTabHeight(
-        safePadding + 100 + fixVal
-      );
-      appStore.init(res);
-    });
+    const res = Taro.getWindowInfo();
+    const safePadding = res.screenHeight - (res.safeArea?.bottom ?? 0);
+    const fixVal = safePadding !== 0 ? 11 * res.pixelRatio : 0;
+    customTabStore.setTabHeight(safePadding + 100 + fixVal);
+    appStore.init(res);
   }
 };
 Taro.useLoad(cacheTabHeight);
